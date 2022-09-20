@@ -11,9 +11,32 @@ namespace xadrez_console
     {
         static void Main(string[] args)
         {
-            PosicaoXadrez pos = new PosicaoXadrez('c', 7);
-           Console.WriteLine(pos);
-            Console.WriteLine(pos.toPosicao());
+            try
+            {
+                PartidaDeXadrez partida = new PartidaDeXadrez();
+                Tela.imprimirTabuleiro(partida.tab);
+                while (!partida.terminada)
+                {
+                    Console.Clear();
+                    Tela.imprimirTabuleiro(partida.tab);
+                    Console.WriteLine();
+                    Console.Write("Digite a posição de origem: ");
+                    Posicao origem = Tela.lerPosicaoXadrez().toPosicao();
+                    Console.WriteLine("Digite a posição de destino: ");
+                    Posicao destino= Tela.lerPosicaoXadrez().toPosicao();
+
+                    partida.executaMovimento(origem, destino);
+                }
+            
+            
+            }
+
+
+            catch (TabuleiroException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
             Console.ReadLine();
 
         }
