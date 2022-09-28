@@ -44,7 +44,7 @@ namespace xadrez_console.tabuleiro
                 throw new TabuleiroException("Já existe uma peça nessa posição");
             }
             pecas[pos.linha, pos.coluna] = p;
-            p.posicao = pos;
+            p.posicao = pos;       
         }
 
         public Peca retirarPeca (Posicao pos)
